@@ -1,0 +1,26 @@
+@"
+bin/
+__pycache__/
+*.pyc
+.env
+*.log
+"@ | Out-File .gitignore -Encoding ascii
+
+@"
+# Orchestrix
+
+Explainable Kubernetes rightsizing recommendations.
+Built for Startup Buildathon India 2026.
+
+## Status
+- Built: minikube test cluster (4 workloads), load generator, metrics capture
+- Prototype: optimizer.py (peak usage plus 50% headroom; baseline EWMA forecast reported), explain.py (Gemini explanations with a number check)
+- Planned: review and approval UI, guarded apply, seasonal forecasting, GKE deployment
+
+Recommendations only. Nothing is applied to the cluster. Sample-cluster results are not production benchmarks.
+
+## Run
+python optimizer.py
+`$env:GEMINI_API_KEY = "your key"; `$env:GEMINI_MODEL = "gemini-4-hydrogen"
+python optimizer.py | python explain.py
+"@ | Out-File README.md -Encoding ascii
